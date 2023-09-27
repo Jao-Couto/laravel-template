@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TarefaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get(
+    '/',
+    [TarefaController::class,'index']
+)->name('tarefa.index');
+
+Route::get(
+    '/create',
+    [TarefaController::class,'create']
+)->name('tarefa.create');
+
+Route::post(
+    '/',
+    [TarefaController::class,'store']
+)->name('tarefa.store');
